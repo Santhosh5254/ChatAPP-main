@@ -119,8 +119,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-// Set backend URL from .env
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+// Set backend URL from .env (fallback to current origin in deployment)
+const rawBackendUrl = import.meta.env.VITE_BACKEND_URL;
+const backendUrl = (rawBackendUrl && rawBackendUrl.replace(/^\s+|\s+$|(^["'])|(["']$)/g, "")) || (typeof window !== "undefined" ? window.location.origin : "");
 axios.defaults.baseURL = backendUrl;
 
 // Create the context
