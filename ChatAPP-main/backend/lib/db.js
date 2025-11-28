@@ -1,15 +1,18 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-//function to connect  to the mongoDB data base
 export const connectDB = async () => {
-    try {
-        mongoose.connection.on('connected', () => console.log('database is connected'))
+  try {
+    mongoose.connection.on("connected", () => console.log("✅ MongoDB connected"));
+    mongoose.connection.on("error", (err) => console.error("❌ MongoDB error:", err));
 
-        await mongoose.connect(`${process.env.MONGODB_URI}/chat-app`, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
-    } catch (error) {
-        console.log(error)
-    }
-}
+    // ✅ Don't append /chat-app manually — your URI already includes DB name in MongoDB Atlas
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+  } catch (error) {
+    console.error("❌ Failed to connect to MongoDB:", error);
+    process.exit(1);
+  }
+};

@@ -6,15 +6,3 @@
 .env.local
 .env.development
 .env.production
-
-# Uploads
-# (If you are NOT deploying the uploads folder, ignore it)
-# /uploads
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Build folder
-/dist
