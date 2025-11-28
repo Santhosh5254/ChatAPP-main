@@ -1,1 +1,1 @@
-THE LIVE PROJECT LINK https://chat-app-main-ikvo.vercel.app/login
+THE LIVE PROJECT LINK https://chat-app-main-jo8k.vercel.app/login
